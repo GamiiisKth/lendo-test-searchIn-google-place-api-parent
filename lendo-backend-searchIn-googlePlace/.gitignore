@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+**/*.log
+**/*.log.*
+**/target
+**/bower_components
+**/node_modules
+**/webapp_build
+**/*.iml
+**/projectFilesBackup*
+**/*.ipr
+**/*.iws
+**/*.idea
+**/.DS_Store

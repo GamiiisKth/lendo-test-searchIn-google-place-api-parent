@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.lendo.test</groupId>
+        <artifactId>lendo-endpoint-searchIn-googlePlace</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+
+    <artifactId>lendo-endpoint-searchIn-googlePlace-development</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <projectBaseUri>${project.baseUri}</projectBaseUri>
+        <java.version>1.6</java.version>
+        <servlet-api.version>3.0-alpha-1</servlet-api.version>
+        <!--jetty-->
+
+        <jetty.port>8029</jetty.port>
+        <jetty.stopPort>9998</jetty.stopPort>
+        <jetty.stopKey>foo</jetty.stopKey>
+        <jetty.daemon>false</jetty.daemon>
+        <jetty.contextPath>/i10</jetty.contextPath>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>se.lendo.test</groupId>
+            <artifactId>lendo-endpoint-searchIn-googlePlace-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.lendo.test</groupId>
+            <artifactId>lendo-common-swagger-ui</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>i10</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <webAppConfig>
+                        <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+                            <!-- Serve the files from the base directory so we don't have to recompile every time a jsp
+                                 or static file is changed
+                            -->
+                            <resourcesAsCSV>
+                                ${project.basedir}/src/main/webapp
+                            </resourcesAsCSV>
+                        </baseResource>
+                    </webAppConfig>
+                    <war>${project.basedir}/target/i10ds29.war</war>
+                    <contextXml>${project.basedir}/src/main/resources/jetty-context.xml</contextXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
