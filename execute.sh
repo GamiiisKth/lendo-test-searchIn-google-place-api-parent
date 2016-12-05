@@ -19,7 +19,6 @@ set -e
 buildOrder=(
 		'dependency-management'
 		'lendo-common-swagger-ui'
-		'lendo-parent-searchIn-googlePlace'
 		'lendo-searchIn-googlePlace-common'
 		'lendo-integration-googleplace-api'
 		'lendo-backend-searchIn-googlePlace'

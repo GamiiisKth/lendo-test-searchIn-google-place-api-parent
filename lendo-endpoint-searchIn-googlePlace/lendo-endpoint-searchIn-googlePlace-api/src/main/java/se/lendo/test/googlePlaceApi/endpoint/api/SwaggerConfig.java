@@ -33,7 +33,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "Lendo search place REST API",
-                "A REST API for getting places from google place api",
+                "A REST API for retrieve places from google place api",
                 "API created for lendo test",
                 "",
                 "ali.yusha.hasan@gmail.com",
