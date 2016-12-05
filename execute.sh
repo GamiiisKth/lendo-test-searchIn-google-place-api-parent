@@ -69,10 +69,10 @@ case "$1" in
     for subdir in "${buildOrder[@]}"; do
       if [ ! -d "$subdir" ]; 
       then        
-        echo "Cloning repository git@github.com:SO4IT/$subdir"
-        git clone git@github.com:SO4IT/$subdir.git  
+        echo "Cloning repository git@github.com:GamiiisKTH/$subdir"
+        git clone git@github.com:GamiiisKTH/$subdir.git  
       else 
-        echo "Not cloning repository git@github.com:SO4IT/$subdir since it alredy exists"
+        echo "Not cloning repository git@github.com:GamiiisKTH/$subdir since it alredy exists"
       fi        
     done
     ;;
